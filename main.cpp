@@ -1,5 +1,6 @@
 #include <iostream>
 #include <graphics.h>
+#include <time.h>
 
 using namespace std;
 
@@ -29,8 +30,11 @@ public:
         //Assigning the balls radius
         this->r = 25;
         //Assigning the speed variables to the ball
-        this->speed_x = (rand() % 3);
-        this->speed_y = (rand() % 4);
+        //srand adds a seed to the random number, so that the random number is random
+        srand ( time(NULL) );
+        //the + 1 is in place so that the speed never is 0, so the ball will always move, no matter what the random number is
+        this->speed_x = (rand() % 5 + 1);
+        this->speed_y = (rand() % 5 + 1);
     }
 
     void update(){
@@ -87,6 +91,8 @@ void Paddle :: update(){
 }
 
 int main(){
+
+
 
     //Initializes the windows using the width and height defined above
     initwindow(WIDTH,HEIGHT);
